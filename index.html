@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="taxCalculatorApp">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+	<title>Tax Calculator</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
+
+	<script>
+		angular.module('taxCalculatorApp', [])
+		.controller('taxCalculatorController', function ($scope) {
+			$scope.total = 0;
+			$scope.salesTax = 0;
+			$scope.tax = 0;
+
+			$scope.$watch('total', function (newValue, oldValue) {
+				var totalAfterSalesTax = newValue / 1.25;
+
+				$scope.salesTax = Math.round(newValue - totalAfterSalesTax);
+				$scope.tax = Math.round(totalAfterSalesTax - (totalAfterSalesTax / 1.36));
+			});
+		});
+	</script>
+</head>
+<body ng-controller="taxCalculatorController">
+	<div class="container">
+		<h1>Tax Calculator</h1>
+
+		<div class="jumbotron">
+			<div class="form-group">
+				<label for="total">Total</label>
+				<input type="number" name="total" class="form-control form-control-lg" placeholder="total" ng-model="total">
+			</div>
+
+			<ul class="list-group">
+				<li class="list-group-item">
+					<span class="float-xs-right">{{salesTax}}</span>
+					Sales Tax
+				</li>
+				<li class="list-group-item">
+					<span class="float-xs-right">{{tax}}</span>
+					Tax
+				</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
