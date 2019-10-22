@@ -41,5 +41,5 @@ $ tax 1234.5 --sales-tax-only
 Outputs:
 
 ```bash
-  Tax: 308
+  Sales tax: 308
 ```
