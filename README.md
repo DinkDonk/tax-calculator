@@ -20,7 +20,8 @@ Outputs:
   Tax: 261
 ```
 
-Only calculate tax:
+#### Only calculate tax:
+
 ```bash
 $ tax 1234.5 --tax-only
 ```
@@ -31,7 +32,8 @@ Outputs:
   Tax: 444
 ```
 
-Only calculate sales tax:
+#### Only calculate sales tax:
+
 ```bash
 $ tax 1234.5 --sales-tax-only
 ```
